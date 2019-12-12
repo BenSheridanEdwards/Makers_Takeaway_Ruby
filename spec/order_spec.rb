@@ -4,7 +4,7 @@ RSpec.describe Order do
 
   let(:order) { Order.new }
   let(:chicken_katsu_curry) { double :dish, name: "Chicken Katsu Curry", price: 6 }
-  let(:sweet_sour_chicken) { double :dish, name: "Sweet & Sour Chicken", price: 6}
+  let(:sweet_sour_chicken) { double :dish, name: "Sweet & Sour Chicken", price: 6 }
 
   it "should initialize with an empty basket" do
     expect(order.show_basket).to eq ""
@@ -20,21 +20,21 @@ RSpec.describe Order do
     it "should increase the quantity shown in the basket when the same dish is ordered multiple times" do
       order.add(chicken_katsu_curry, 1)
       order.add(chicken_katsu_curry, 1)
-      expect(order.show_basket).to include("Chicken Katsu Curry")
-      expect(order.show_basket).to include("2")
+      expect(order.show_basket).to include "Chicken Katsu Curry"
+      expect(order.show_basket).to include "2"
     end
 
     it "should be able to add more than one different type of dish to the basket" do
       order.add(chicken_katsu_curry, 1)
       order.add(sweet_sour_chicken, 1)
-      expect(order.show_basket).to include("Chicken Katsu Curry")
-      expect(order.show_basket).to include("Sweet & Sour Chicken")
+      expect(order.show_basket).to include "Chicken Katsu Curry"
+      expect(order.show_basket).to include "Sweet & Sour Chicken"
     end
   end
 
   describe '#add' do
     it "should confirm each dish and quantity that has been added to the basket" do
-      expect(order.add(chicken_katsu_curry, 1)).to eq ("1 Chicken Katsu Curry's have been added to your basket")
+      expect(order.add(chicken_katsu_curry, 1)).to eq "1 Chicken Katsu Curry's have been added to your basket"
     end
   end
 
@@ -60,10 +60,5 @@ RSpec.describe Order do
       order.add(sweet_sour_chicken, 2)
       expect(order.total_cost).to eq "Your order's total: £12"
     end
-  end
-
-  context "when a customer wants to checkout with their current order" do
-   
-    
   end
 end

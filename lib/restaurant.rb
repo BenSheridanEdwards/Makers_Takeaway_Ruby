@@ -11,10 +11,12 @@ class Restaurant
   end
 
   def checkout(amount = 0)
-    raise "Error: No payment amount given, please confirm your payment amount" if no_amount_given(amount)
-    raise "Error: Incorrect payment amount given, please confirm your payment amount and try again" if wrong_amount_given(amount)
-    "Thank you, your order has been accepted, your delivery time will be #{delivery_time}"
+    raise "Error: No payment amount given, please give an amount" if no_amount_given(amount)
+
+    raise "Error: Incorrect payment amount given, please try again" if wrong_amount_given(amount)
+
     @messager.send_text(delivery_time)
+    return "Thank you, your order has been accepted, your delivery time will be #{delivery_time}"
   end
 
   def total_amount
@@ -28,7 +30,7 @@ class Restaurant
   end
   
   def no_amount_given(amount)
-    amount == 0
+    amount.zero?
   end
 
   def wrong_amount_given(amount)

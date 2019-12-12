@@ -18,13 +18,13 @@ RSpec.describe Menu do
       end 
  
       it "should return the menu list, with each dish's name" do
-        expect(menu.list).to include (dish1.name)
-        expect(menu.list).to include (dish2.name)
+        expect(menu.list).to include dish1.name
+        expect(menu.list).to include dish2.name
       end
 
       it "should return the menu list, with each dish's price" do
-        expect(menu.list).to include (dish1.price.to_s)
-        expect(menu.list).to include (dish2.price.to_s)
+        expect(menu.list).to include dish1.price.to_s
+        expect(menu.list).to include dish2.price.to_s
       end
     end
   end
@@ -32,13 +32,13 @@ RSpec.describe Menu do
   describe '#add' do
     it 'should add a dish to the menu list when passed as an argument' do
       menu.add(dish1)
-      expect(menu.list).to include (dish1.name)
+      expect(menu.list).to include dish1.name
     end
 
     it 'should raise an error if the dish is already on the menu' do
       menu.add(dish1)
       message = "Input dish unsuccessful. Chicken Katsu Curry is already on the menu"
-      expect{ menu.add(dish1) }.to raise_error message
+      expect { menu.add(dish1) }.to raise_error message
     end
   end
-end 
+end

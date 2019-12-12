@@ -10,6 +10,7 @@ class Menu
 
   def add(dish)
     raise "Input dish unsuccessful. #{dish.name} is already on the menu" if on_menu?(dish)
+    
     @dishes << dish
     "#{dish.name} has been added to the menu"
   end
