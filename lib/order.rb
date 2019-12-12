@@ -2,7 +2,7 @@ class Order
 
   def initialize
     @basket = Hash.new(0)
-    @is_complete = false
+    @complete = false
   end
 
   def show_basket
@@ -20,11 +20,12 @@ class Order
     "Your order's total: £#{total}"
   end
   
-  def checkout(amount = 0)
-    raise "Error: No payment amount given, please confirm your payment amount" if no_amount_given(amount)
-    raise "Error: Incorrect payment amount given, please confirm your payment amount and try again" if wrong_amount_given(amount)
-    @is_complete = true 
-    "Thank you, your order has been confirmed"
+  def confirmed
+    @complete = true
+  end
+
+  def complete?
+    @complete
   end
 
   private
@@ -33,11 +34,4 @@ class Order
     @basket.reduce(0) { |total, (dish, quantity)| total + dish.price * quantity }
   end
 
-  def no_amount_given(amount)
-    amount == 0
-  end
-
-  def wrong_amount_given(amount)
-    amount != total
-  end
 end
