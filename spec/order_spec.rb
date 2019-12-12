@@ -63,26 +63,7 @@ RSpec.describe Order do
   end
 
   context "when a customer wants to checkout with their current order" do
-    before(:each) do
-      order.add(sweet_sour_chicken, 2)
-    end
+   
     
-    it "should raise an error if the customer fails to enter their payment amount upon checkout" do
-      message = "Error: No payment amount given, please confirm your payment amount"
-      expect{ order.checkout() }.to raise_error message
-    end
-
-    it "should raise an error if the customer fails to checkout with the correct payment amount" do
-      message = "Error: Incorrect payment amount given, please confirm your payment amount and try again"
-      expect{ order.checkout(10) }.to raise_error message
-    end
-
-    it "should return the total cost of the order" do
-      expect(order.total_cost).to eq "Your order's total: £12"
-    end
-
-    it "should confirm their order has been submited when the correct payment amount is given" do
-      expect(order.checkout(12)).to eq "Thank you, your order has been confirmed"
-    end
   end
 end

@@ -2,6 +2,7 @@ class Order
 
   def initialize
     @basket = Hash.new(0)
+    @total = 0
     @complete = false
   end
 
@@ -31,7 +32,8 @@ class Order
   private
 
   def total
-    @basket.reduce(0) { |total, (dish, quantity)| total + dish.price * quantity }
+   @total = @basket.reduce(0) { |total, (dish, quantity)| total + dish.price * quantity }
+   return @total
   end
 
 end
